@@ -25,5 +25,4 @@ class DataService {
     func getFriends() -> [Friend] {
         return friends
     }
-    
 }
