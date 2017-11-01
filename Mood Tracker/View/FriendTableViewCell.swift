@@ -12,6 +12,7 @@ class FriendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var friendMood: UILabel!
+    
     // this func updates the UILabel - name and mood
     func updateCell(friend: Friend) {
         friendName.text = friend.name

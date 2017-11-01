@@ -18,15 +18,23 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         friendTableView.dataSource = self
         friendTableView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateTableView()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - TableView Section
+    
     // This function tells the data source to return the number of rows in a given section of a table view.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataService.instance.getFriends().count
     }
+    
     // This function asks the data source for a cell to insert in a particular location of the table view.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell") as? FriendTableViewCell {
@@ -34,9 +42,17 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.updateCell(friend: friend)
             return cell
         } else {
-            
             return FriendTableViewCell()
         }
+    }
+    
+    // This function will update the TableView with the newest friend added by the user
+    func updateTableView() {
+        friendTableView.beginUpdates()
+        friendTableView.insertRows(at: [
+            NSIndexPath(row: DataService.instance.getFriends().count-1, section: 0) as IndexPath
+            ], with: .automatic)
+        friendTableView.endUpdates()
     }
 }
 

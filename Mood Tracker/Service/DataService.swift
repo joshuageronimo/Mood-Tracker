@@ -8,21 +8,25 @@
 
 import Foundation
 
+// Intro: this class will be dealing with the database of the app
+
 class DataService {
+    
     // Static let will provide a singleton design to DataService
     // This means it will only ever have one copy of instance - hence, save memory.
     static let instance = DataService()
-    // Friend Dummy Data base
-    private let friends = [
-        Friend.init(name: "Joshua", mood: "😁"),
-        Friend.init(name: "Shan", mood: "😡"),
-        Friend.init(name: "Angel", mood: "😑"),
-        Friend.init(name: "Derek", mood: "😭"),
-        Friend.init(name: "Ray", mood: "😁"),
-        Friend.init(name: "Sandy", mood: nil)
-    ]
+    
+    // This array will hold the database of friends the user is keeping track of
+    private var friends = [Friend]()
+    
     // this fuction will return an array of Friend
     func getFriends() -> [Friend] {
         return friends
+    }
+    
+    // this function will add another element to the friend database
+    func addFriend(name: String) {
+        // mood will be nil since initially the friend will not have a mood tracked yet
+        friends.append(Friend(name: name, mood: nil))
     }
 }

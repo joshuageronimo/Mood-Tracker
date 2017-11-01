@@ -18,19 +18,22 @@ class NewFriendViewController: UIViewController {
         super.viewDidLoad()
         dismissKeyboard()
     }
-
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    // TODO: Connect this to the DataService() 
+    // When this button is clicked, whatever String is in the textfield will be added to the array database
     @IBAction func addFriendButton(_ sender: UIButton) {
         if newFriendName.text == "" {
+            // Show instruction
             titleLabel.text = "Enter Your Friend's Name"
         } else {
-            titleLabel.text = newFriendName.text!
+            // add the new friend in the Database
+            DataService.instance.addFriend(name: newFriendName.text!)
+            // pop back to the last ViewController
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
