@@ -24,9 +24,14 @@ class DataService {
         return friends
     }
     
+    // This function will update a friend's mood
+    func updateMood(index: Int, sameName: String, updatedMood: String) {
+        friends[index] = Friend(name: sameName, mood: updatedMood)
+    }
+    
     // this function will add another element to the friend database
-    func addFriend(name: String) {
+    func addFriend(newName: String) {
         // mood will be nil since initially the friend will not have a mood tracked yet
-        friends.append(Friend(name: name, mood: nil))
+        friends.append(Friend(name: newName, mood: nil))
     }
 }

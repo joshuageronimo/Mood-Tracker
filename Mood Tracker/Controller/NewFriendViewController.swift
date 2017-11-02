@@ -33,7 +33,7 @@ class NewFriendViewController: UIViewController {
             titleLabel.text = "Enter Your Friend's Name"
         } else {
             // add the new friend in the Database
-            DataService.instance.addFriend(name: newFriendName.text!)
+            DataService.instance.addFriend(newName: newFriendName.text!)
             // set bool to true since the user added a new friend
             delegate?.didUserAddNewFriend(bool: true)
             // pop back to the last ViewController

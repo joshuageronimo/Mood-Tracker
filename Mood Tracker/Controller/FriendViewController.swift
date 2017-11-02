@@ -47,6 +47,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if segue.identifier == "NewFriendViewController"  {
             guard let newFriendViewController = segue.destination as? NewFriendViewController else {return}
             newFriendViewController.delegate = self
+        } else if segue.identifier == "MoodPickerViewController" {
+            if let moodPickerViewController = segue.destination as? MoodPickerViewController {
+                moodPickerViewController.friend(yo: sender as! Int)
+            }
         }
     }
     
@@ -66,6 +70,11 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             return FriendTableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let friend = indexPath.row
+        performSegue(withIdentifier: "MoodPickerViewController", sender: friend)
     }
     
     // This function will update the TableView with the newest friend added by the user
