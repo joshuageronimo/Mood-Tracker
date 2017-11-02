@@ -12,5 +12,5 @@ import Foundation
 // Info: The function has a parameter that takes in a Boolean type [true, false]
 
 protocol AddFriendDelegate {
-    func didUserAddNewFriend(bool: Bool)
+    func didUserAddNewFriend(_ bool: Bool)
 }

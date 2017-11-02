@@ -139,12 +139,18 @@
                                         <color key="backgroundColor" red="1" green="0.6588235294" blue="0.0" alpha="0.26680222599999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="😑"/>
+                                        <connections>
+                                            <action selector="moodLevelButton:" destination="o9i-vL-04W" eventType="touchUpInside" id="Cvd-ql-yD9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NsT-4v-CsL">
                                         <rect key="frame" x="0.0" y="268.5" width="375" height="124.5"/>
                                         <color key="backgroundColor" red="1" green="0.6588235294" blue="0.0" alpha="0.26680222599999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="😡"/>
+                                        <connections>
+                                            <action selector="moodLevelButton:" destination="o9i-vL-04W" eventType="touchUpInside" id="GIb-DV-WbK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

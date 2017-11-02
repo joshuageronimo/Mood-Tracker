@@ -35,7 +35,7 @@ class NewFriendViewController: UIViewController {
             // add the new friend in the Database
             DataService.instance.addFriend(newName: newFriendName.text!)
             // set bool to true since the user added a new friend
-            delegate?.didUserAddNewFriend(bool: true)
+            delegate?.didUserAddNewFriend(true)
             // pop back to the last ViewController
             self.navigationController?.popViewController(animated: true)
         }

@@ -10,31 +10,28 @@ import UIKit
 
 class MoodPickerViewController: UIViewController {
     
-    // These are just testing to see if I can get the index of each cell
-    // TODO: Now that we have access to the index, use it to update the Mood in the DataService
-    // TODO: Don't forget to update the FriendViewController when the user hits the moodButton
+    private var index: Int!
+    private var name: String!
+    // Will be intialized once the segue is called
+    var delegate: UpdateFriendDelegate?
     
-    var x: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(x)
         // Do any additional setup after loading the view.
     }
     
-    func friend(yo: Int) {
-        self.x = yo
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // This function saves the data that was passed in by the segue from FriendViewController
+    func currentFriend(friend: Friend, index: Int) {
+        self.index = index
+        self.name = friend.getName()
     }
     
-    
-    
-    // TODO: Connect DataService
     @IBAction func moodLevelButton(_ sender: UIButton) {
-        //DataService.instance.updateMood(index: <#T##Int#>, name: <#T##String#>, mood: <#T##String#>)
+        // This line will update the current table view cell's data
+        DataService.instance.updateMood(index: self.index, sameName: self.name, updatedMood: sender.currentTitle!)
+        // Set didUserUpdateFriend to true, so that it will reload the TableView in FriendViewContrller
+        delegate?.didUserUpdateFriend(true)
+        // Go Back To Last View Controller
         self.navigationController?.popViewController(animated: true)
     }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DF24FF1A1FAB8EEF007D3885 /* MoodPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24FF191FAB8EEF007D3885 /* MoodPickerViewController.swift */; };
+		DF24FF1C1FABA2D6007D3885 /* UpdateFriendDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24FF1B1FABA2D6007D3885 /* UpdateFriendDelegate.swift */; };
 		DF26ECC21FA8D0EB007119C5 /* NewFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF26ECC11FA8D0EB007119C5 /* NewFriendViewController.swift */; };
 		DFD79C791FA787FA002391A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD79C781FA787FA002391A6 /* AppDelegate.swift */; };
 		DFD79C7B1FA787FA002391A6 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD79C7A1FA787FA002391A6 /* FriendViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		DF24FF191FAB8EEF007D3885 /* MoodPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodPickerViewController.swift; sourceTree = "<group>"; };
+		DF24FF1B1FABA2D6007D3885 /* UpdateFriendDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFriendDelegate.swift; sourceTree = "<group>"; };
 		DF26ECC11FA8D0EB007119C5 /* NewFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendViewController.swift; sourceTree = "<group>"; };
 		DFD79C751FA787FA002391A6 /* Mood Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mood Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD79C781FA787FA002391A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				DFD79C921FA794DE002391A6 /* Friend.swift */,
 				DFFB68D11FAAA4A90045042D /* AddFriendDelegate.swift */,
+				DF24FF1B1FABA2D6007D3885 /* UpdateFriendDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD79C8E1FA7907C002391A6 /* FriendTableViewCell.swift in Sources */,
+				DF24FF1C1FABA2D6007D3885 /* UpdateFriendDelegate.swift in Sources */,
 				DF26ECC21FA8D0EB007119C5 /* NewFriendViewController.swift in Sources */,
 				DFD79C7B1FA787FA002391A6 /* FriendViewController.swift in Sources */,
 				DFFB68D21FAAA4A90045042D /* AddFriendDelegate.swift in Sources */,

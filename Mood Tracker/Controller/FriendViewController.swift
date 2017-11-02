@@ -8,10 +8,11 @@
 
 import UIKit
 
-class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddFriendDelegate {
-    
+class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddFriendDelegate, UpdateFriendDelegate {
+   
     @IBOutlet weak var friendTableView: UITableView!
     var userAddedANewFriend = false
+    var userUpdatedFriend = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +27,13 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Will only update TableView if the user added a new Friend
         if userAddedANewFriend {
             updateTableView()
+            // Will reload data if the user updates the mood of a friend
+        } else if userUpdatedFriend {
+            friendTableView.reloadData()
         }
         // set userAddedNewFriend back to false since the user has not added a new friend again
         userAddedANewFriend = false
+        userUpdatedFriend = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,23 +43,29 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Protocols / Delegate / Segues
     
-    // This func is from the UserAddFriendDelegate protocol
-    func didUserAddNewFriend(bool: Bool) {
+    // This func is from the AddFriendDelegate protocol
+    func didUserAddNewFriend(_ bool: Bool) {
         userAddedANewFriend = bool
     }
+    // This func is from the UpdateFriendDelegate protocol
+    func didUserUpdateFriend(_ bool: Bool) {
+        userUpdatedFriend = bool
+    }
     
+    // this segue contains two seques [NewFriendViewController, MoodPickerViewController]
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NewFriendViewController"  {
             guard let newFriendViewController = segue.destination as? NewFriendViewController else {return}
             newFriendViewController.delegate = self
         } else if segue.identifier == "MoodPickerViewController" {
             if let moodPickerViewController = segue.destination as? MoodPickerViewController {
-                moodPickerViewController.friend(yo: sender as! Int)
+                moodPickerViewController.currentFriend(friend: DataService.instance.getFriends()[sender as! Int], index: sender as! Int)
+                moodPickerViewController.delegate = self
             }
         }
     }
     
-    // MARK: - TableView Section
+    // MARK: - Overriden TableView Functions
     
     // This function tells the data source to return the number of rows in a given section of a table view.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,10 +83,13 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    // This function will get the index of the tapped table cell view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let friend = indexPath.row
         performSegue(withIdentifier: "MoodPickerViewController", sender: friend)
     }
+    
+    // MARK: - My Custom TableView Functions
     
     // This function will update the TableView with the newest friend added by the user
     func updateTableView() {
