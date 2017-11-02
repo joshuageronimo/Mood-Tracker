@@ -8,24 +8,46 @@
 
 import UIKit
 
-class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
+class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddFriendDelegate {
+    
     @IBOutlet weak var friendTableView: UITableView!
+    var userAddedANewFriend = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // set dataSource and delegate to FriendViewController
         friendTableView.dataSource = self
         friendTableView.delegate = self
+        isTheTableViewEmpty()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateTableView()
+        isTheTableViewEmpty()
+        // Will only update TableView if the user added a new Friend
+        if userAddedANewFriend {
+            updateTableView()
+        }
+        // set userAddedNewFriend back to false since the user has not added a new friend again
+        userAddedANewFriend = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Protocols / Delegate / Segues
+    
+    // This func is from the UserAddFriendDelegate protocol
+    func didUserAddNewFriend(bool: Bool) {
+        userAddedANewFriend = bool
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "NewFriendViewController"  {
+            guard let newFriendViewController = segue.destination as? NewFriendViewController else {return}
+            newFriendViewController.delegate = self
+        }
     }
     
     // MARK: - TableView Section
@@ -53,6 +75,23 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             NSIndexPath(row: DataService.instance.getFriends().count-1, section: 0) as IndexPath
             ], with: .automatic)
         friendTableView.endUpdates()
+    }
+    
+    // This function will check if the data is empty. If so, it will print a message for the user
+    func isTheTableViewEmpty() {
+        if DataService.instance.getFriends().count == 0 {
+            // else display the empty TableView Message
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: friendTableView.bounds.size.width, height: friendTableView.bounds.size.height))
+            messageLabel.text = "You don't have any friends ☹️\n\nTo add a friend, tap the '+' button"
+            messageLabel.numberOfLines = 3
+            messageLabel.textAlignment = NSTextAlignment.center
+            messageLabel.sizeToFit()
+            friendTableView.backgroundView = messageLabel
+            friendTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        } else {
+            friendTableView.backgroundView = nil
+            friendTableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        }
     }
 }
 

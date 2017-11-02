@@ -92,7 +92,7 @@
                         <barButtonItem key="backBarButtonItem" title="back" id="Gki-n6-Ffg"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="F2t-Mr-hIK">
                             <connections>
-                                <segue destination="vNA-i5-p5S" kind="show" id="Fve-pk-5ku"/>
+                                <segue destination="vNA-i5-p5S" kind="show" identifier="NewFriendViewController" id="Fve-pk-5ku"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -16,6 +16,7 @@
 		DFD79C8E1FA7907C002391A6 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD79C8D1FA7907C002391A6 /* FriendTableViewCell.swift */; };
 		DFD79C911FA79307002391A6 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD79C901FA79307002391A6 /* DataService.swift */; };
 		DFD79C931FA794DE002391A6 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD79C921FA794DE002391A6 /* Friend.swift */; };
+		DFFB68D21FAAA4A90045042D /* AddFriendDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB68D11FAAA4A90045042D /* AddFriendDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DFD79C8D1FA7907C002391A6 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		DFD79C901FA79307002391A6 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		DFD79C921FA794DE002391A6 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		DFFB68D11FAAA4A90045042D /* AddFriendDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				DFD79C921FA794DE002391A6 /* Friend.swift */,
+				DFFB68D11FAAA4A90045042D /* AddFriendDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				DFD79C8E1FA7907C002391A6 /* FriendTableViewCell.swift in Sources */,
 				DF26ECC21FA8D0EB007119C5 /* NewFriendViewController.swift in Sources */,
 				DFD79C7B1FA787FA002391A6 /* FriendViewController.swift in Sources */,
+				DFFB68D21FAAA4A90045042D /* AddFriendDelegate.swift in Sources */,
 				DFD79C931FA794DE002391A6 /* Friend.swift in Sources */,
 				DFD79C791FA787FA002391A6 /* AppDelegate.swift in Sources */,
 				DFD79C911FA79307002391A6 /* DataService.swift in Sources */,
