@@ -89,6 +89,18 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         performSegue(withIdentifier: "MoodPickerViewController", sender: friend)
     }
     
+    // this method handles row deletion
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // remove the item from the data model
+            DataService.instance.deleteFriend(atIndex: indexPath.row)
+            // delete the table view row
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            // Check if the TableView is empty
+            isTheTableViewEmpty()
+        }
+    }
+    
     // MARK: - My Custom TableView Functions
     
     // This function will update the TableView with the newest friend added by the user

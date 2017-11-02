@@ -34,4 +34,9 @@ class DataService {
         // mood will be nil since initially the friend will not have a mood tracked yet
         friends.append(Friend(name: newName, mood: nil))
     }
+    
+    // this
+    func deleteFriend(atIndex: Int) {
+        friends.remove(at: atIndex)
+    }
 }
