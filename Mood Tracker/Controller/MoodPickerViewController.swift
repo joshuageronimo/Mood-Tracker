@@ -23,7 +23,7 @@ class MoodPickerViewController: UIViewController {
     // This function saves the data that was passed in by the segue from FriendViewController
     func currentFriend(friend: Friend, index: Int) {
         self.index = index
-        self.name = friend.getName()
+        self.name = friend.friendName
     }
     
     @IBAction func moodLevelButton(_ sender: UIButton) {

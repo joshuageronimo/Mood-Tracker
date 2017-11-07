@@ -19,9 +19,11 @@ class DataService {
     // This array will hold the database of friends the user is keeping track of
     private var friends = [Friend]()
     
-    // this fuction will return an array of Friend
-    func getFriends() -> [Friend] {
-        return friends
+    // this computed property will return an array of Friend
+    var friendArray: [Friend] {
+        get {
+            return friends
+        }
     }
     
     // This function will update a friend's mood

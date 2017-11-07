@@ -16,7 +16,10 @@ struct Friend {
     // mood is an optional String type because initially a Friend does not have a mood set yet
     private(set) public var mood: String?
     
-    func getName() -> String {
-        return name
+    // this is a computed property that returns name
+    var friendName: String {
+        get {
+            return name
+        }
     }
 }

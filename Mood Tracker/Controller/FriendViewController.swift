@@ -14,6 +14,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var userAddedANewFriend = false
     var userUpdatedFriend = false
     
+    // TODO: Find a way to hide bar when scrolling
     override func viewDidLoad() {
         super.viewDidLoad()
         // set dataSource and delegate to FriendViewController
@@ -59,7 +60,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             newFriendViewController.delegate = self
         } else if segue.identifier == "MoodPickerViewController" {
             if let moodPickerViewController = segue.destination as? MoodPickerViewController {
-                moodPickerViewController.currentFriend(friend: DataService.instance.getFriends()[sender as! Int], index: sender as! Int)
+                moodPickerViewController.currentFriend(friend: DataService.instance.friendArray[sender as! Int], index: sender as! Int)
                 moodPickerViewController.delegate = self
             }
         }
@@ -69,13 +70,13 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // This function tells the data source to return the number of rows in a given section of a table view.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataService.instance.getFriends().count
+        return DataService.instance.friendArray.count
     }
     
     // This function asks the data source for a cell to insert in a particular location of the table view.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell") as? FriendTableViewCell {
-            let friend = DataService.instance.getFriends()[indexPath.row]
+            let friend = DataService.instance.friendArray[indexPath.row]
             cell.updateCell(friend: friend)
             return cell
         } else {
@@ -107,14 +108,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func updateTableView() {
         friendTableView.beginUpdates()
         friendTableView.insertRows(at: [
-            NSIndexPath(row: DataService.instance.getFriends().count-1, section: 0) as IndexPath
+            NSIndexPath(row: DataService.instance.friendArray.count-1, section: 0) as IndexPath
             ], with: .automatic)
         friendTableView.endUpdates()
     }
     
     // This function will check if the data is empty. If so, it will print a message for the user
     func isTheTableViewEmpty() {
-        if DataService.instance.getFriends().count == 0 {
+        if DataService.instance.friendArray.count == 0 {
             // else display the empty TableView Message
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: friendTableView.bounds.size.width, height: friendTableView.bounds.size.height))
             messageLabel.text = "You don't have any friends ☹️\n\nTo add a friend, tap the '+' button"
