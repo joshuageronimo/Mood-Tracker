@@ -14,7 +14,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var userAddedANewFriend = false
     var userUpdatedFriend = false
     
-    // TODO: Find a way to hide bar when scrolling
     override func viewDidLoad() {
         super.viewDidLoad()
         // set dataSource and delegate to FriendViewController
